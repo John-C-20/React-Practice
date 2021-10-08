@@ -1,38 +1,34 @@
 import "./styles.css";
+import { Child, updateStateByParent } from "./child";
+import { updateStateBySibling } from "./sibling";
 
-import { useState } from "react";
-
-let updateState;
-let updateChild;
-
-function Child1(props) {
-  const [text, setText] = useState("Initial State");
-  updateState = (text) => setText(text);
-
-  return (
-    <div>
-      <div>I am Child</div>
-      <div>{text}</div>
-    </div>
-  );
-}
-
+// parent
 function App() {
-  updateChild = (text) => {
-    updateState(text);
+  const updateChild = (text) => {
+    updateStateByParent(text);
+  };
+
+  const updateSibling = (text) => {
+    updateStateBySibling(text);
   };
 
   return (
-    <div>
+    <div className="parent">
       <div>I am Parent</div>
       <input
         type="text"
-        placeholder="Write text"
+        placeholder="for the child"
         onChange={(e) => updateChild(e.target.value)}
       />
-      <Child1 />
+      <Child />
+      <input
+        placeholder="for the sibling"
+        onChange={(e) => updateSibling(e.target.value)}
+      />
     </div>
   );
 }
+
+// end --
 
 export default App;

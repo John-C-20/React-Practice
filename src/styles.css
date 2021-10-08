@@ -1,4 +1,16 @@
-.App {
-  font-family: sans-serif;
+.parent {
+  padding: 20px;
+  margin: 10px;
   text-align: center;
+  border: 1px solid black;
+}
+
+.child {
+  margin: 20px;
+  text-align: center;
+  border: 1px solid black;
+}
+
+.highlighted {
+  background: yellow;
 }
